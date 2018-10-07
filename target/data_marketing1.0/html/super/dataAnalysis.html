@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../../css/common.css">
+	<link rel="stylesheet" type="text/css" href="../../css/dataAnalysis.css">
+	<link rel="stylesheet" type="text/css" href="../../css/iconfont.css">
+</head>
+<body>
+	<div id="header">
+		<img src="../../img/header.png" class="aligncenter" style="width: 1200px;">
+	</div>
+	<div id="main">
+		<div id="nav">
+			<ul>
+				<a href="inventoryManagement.html"><li>库存管理</li></a>
+				<a href="marketingStatistics.html"><li>营销统计</li></a>
+				<a href="dataAnalysis.html"><li style="background-color: #ecf3f7">数据分析</li></a>
+				<a href="accountDistribute.html"><li>账号分配</li></a>
+			</ul>
+		</div>
+		<div id="content">
+			<div class="choose">
+				<span style="height: 70px;">地区</span>
+				<select class="province" name="province"></select>
+				<div class="clear"></div> 
+				<span>时间</span><label for="start">起始时间：</label><input id="startTime" type="date" value="2017-01-13"/><label for="end" style="margin-left: 100px;">结束时间：</label><input id="endTime" type="date" value="2018-01-13"/><div class="clear"></div>
+				<div class="only">销售前<input type="text" class="paixu" style="width: 50px">名<button class="chaxun">搜索</button></div>
+
+			</div>
+			<div id="chaxunContent">
+			<table class="J_table table table-hover table-bordered">
+	            <thead>
+	                <tr>
+	                    <th>序号</th>
+	                    <th>地区</th>
+<!-- 	                    <th>时间段(起)</th>
+	                    <th>时间段(止)</th> -->
+	                    <th>用户名</th>
+	                    <th>销售量</th>
+	                </tr>
+	            </thead>   
+	            <tbody id="J_template">
+	            </tbody>     
+	        </table>
+		</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../js/dataAnalysis1.js"></script>
+	</body>
+</html>

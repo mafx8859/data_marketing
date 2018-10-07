@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="data_marketing_db@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.1">
+    <root id="1"/>
+    <schema id="2" parent="1" name="data_marketing_db">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="accountbook"/>
+    <schema id="4" parent="1" name="ais"/>
+    <schema id="5" parent="1" name="ais16"/>
+    <schema id="6" parent="1" name="articlemanger"/>
+    <schema id="7" parent="1" name="blog"/>
+    <schema id="8" parent="1" name="cwunew"/>
+    <schema id="9" parent="1" name="db_taiji"/>
+    <schema id="10" parent="1" name="emplguidecenter"/>
+    <schema id="11" parent="1" name="information_schema"/>
+    <schema id="12" parent="1" name="mafx"/>
+    <schema id="13" parent="1" name="mafxblog"/>
+    <schema id="14" parent="1" name="mfx"/>
+    <schema id="15" parent="1" name="mfxly"/>
+    <schema id="16" parent="1" name="mysql"/>
+    <schema id="17" parent="1" name="networkcourse"/>
+    <schema id="18" parent="1" name="performance_schema"/>
+    <schema id="19" parent="1" name="ssm_crud"/>
+    <schema id="20" parent="1" name="sys"/>
+    <schema id="21" parent="1" name="test1"/>
+    <schema id="22" parent="1" name="test1.0"/>
+    <schema id="23" parent="1" name="test2"/>
+    <schema id="24" parent="1" name="testc3p0"/>
+    <schema id="25" parent="1" name="testdata"/>
+    <schema id="26" parent="1" name="testdata1"/>
+    <schema id="27" parent="1" name="userinfon"/>
+    <schema id="28" parent="1" name="usermanger"/>
+    <table id="29" parent="2" name="generaluser_admin"/>
+    <table id="30" parent="2" name="goods"/>
+    <table id="31" parent="2" name="goods_marketing"/>
+    <table id="32" parent="2" name="param_city"/>
+    <table id="33" parent="2" name="param_province"/>
+    <table id="34" parent="2" name="province_admin"/>
+    <table id="35" parent="2" name="user"/>
+    <column id="36" parent="29" name="general_user_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="37" parent="29" name="admin_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="38" parent="29" name="id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <key id="39" parent="29" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="40" parent="30" name="goods_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="41" parent="30" name="goods_name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="42" parent="30" name="goods_price">
+      <Position>3</Position>
+      <DataType>float(11)|0</DataType>
+    </column>
+    <column id="43" parent="30" name="goods_num">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="44" parent="30" name="user_id">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="45" parent="30" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>goods_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="46" parent="31" name="goods_id">
+      <Position>1</Position>
+      <Comment>货物id</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="47" parent="31" name="province_id">
+      <Position>2</Position>
+      <Comment>销售地id，与param_province对应</Comment>
+      <DataType>int(11)|0</DataType>
+      <DefaultExpression>&apos;1&apos;</DefaultExpression>
+    </column>
+    <column id="48" parent="31" name="start_date">
+      <Position>3</Position>
+      <Comment>销售开始日期</Comment>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="49" parent="31" name="end_date">
+      <Position>4</Position>
+      <Comment>销售结束日期</Comment>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="50" parent="31" name="sales_volume">
+      <Position>5</Position>
+      <Comment>销售量</Comment>
+      <DataType>bigint(255)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="51" parent="31" name="city_id">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="52" parent="31" name="user_id">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="53" parent="31" name="data_id">
+      <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <key id="54" parent="31" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>data_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="55" parent="32" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="56" parent="32" name="city_name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="57" parent="32" name="province_id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="58" parent="32" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="59" parent="33" name="province_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="60" parent="33" name="province_name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="61" parent="33" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>province_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="62" parent="34" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="63" parent="34" name="province_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="64" parent="34" name="admin_id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="65" parent="34" name="city_id">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="66" parent="34" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="67" parent="35" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="68" parent="35" name="username">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="69" parent="35" name="password">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="70" parent="35" name="level">
+      <Position>4</Position>
+      <Comment>用户级别0-普通，1-管理员，2-超级管理员</Comment>
+      <DataType>enum(&apos;2&apos;, &apos;1&apos;, &apos;0&apos;)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="71" parent="35" name="province_id">
+      <Position>5</Position>
+      <Comment>1</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="72" parent="35" name="realname">
+      <Position>6</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="73" parent="35" name="phoneNum">
+      <Position>7</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="74" parent="35" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

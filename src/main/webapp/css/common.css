@@ -1,0 +1,74 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+/*居中*/
+.aligncenter { 
+clear: both; 
+display: block; 
+margin:auto; 
+} 
+#chaxunContent{
+	height: 450px;
+	overflow: scroll;
+	margin-top: 20px;
+}
+.table{margin-bottom: 0}
+#J_template{
+	overflow: hidden;
+	height:500px;
+	width: 800px;
+	border: 1px solid red;
+}
+#main{
+	margin: 40px auto;
+	width: 1180px;
+	height: 600px;
+/*	border: 1px solid blue;*/
+}
+#nav{
+	width: 140px;
+	height: 600px;
+	float: left;
+/*	border: 1px solid blue;*/
+	background-color: #90cef7;
+}
+#nav ul{
+	list-style: none;
+}
+#nav ul a{
+
+}
+#nav ul a li{
+	color: #296181;
+	float: left;
+	width: 140px;
+	height: 80px;
+	font-size: 23px;
+	letter-spacing: 2px;
+	line-height: 80px;
+	text-align: center;
+	border-bottom: 1px solid white;
+}
+#content{
+	width: 1010px;
+	height: 600px;
+	float: right;
+	background-color: #90cef7; 
+	padding: 0 30px;
+}
+.J_table thead th{
+	background-color: #6a9ad0;
+	color: white;
+	margin: 0 auto;
+	text-align: center;
+}
+#J_template tr{
+	text-align: center;
+}
+#J_template tr:nth-child(odd){
+	background-color: #c2d7ee;
+}
+#J_template tr:nth-child(even){
+	background-color: #ecf3f7;
+}

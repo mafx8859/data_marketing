@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="com.datamarketing.dao.UserCommDao">
+    <select id="loginDao" resultType="com.datamarketing.entity.User">
+        SELECT * FROM user WHERE username=#{username} and password=#{password}
+    </select>
+    <insert id="addUserDao">
+        INSERT into user(username, password,province_id,realname,phoneNum) VALUE (#{username}, #{password},#{province_id},#{realname},#{phoneNum});
+    </insert>
+    <select id="getAllUserDao" resultType="com.datamarketing.entity.User">
+        SELECT user.password,user.id,user.username,param_province.province_name,user.level,user.realname
+        from user,param_province
+        where user.province_id=param_province.province_id and user.level!=2
+    </select>
+    <select id="getAllUserByAdminIdDao" resultType="com.datamarketing.entity.User">
+        SELECT user.password,user.id,user.username,param_province.province_name,user.level,user.realname
+        from user,param_province,province_admin
+        where user.province_id=param_province.province_id
+        AND province_admin.province_id=param_province.province_id
+        AND province_admin.admin_id=#{adminId}
+    </select>
+    <delete id="deleteUserByIdDao">
+        DELETE from user where id=#{userId}
+    </delete>
+    <select id="getUserByIdDao" resultType="com.datamarketing.entity.User">
+        SELECT user.password,user.id,user.username,param_province.province_name,user.level,user.realname
+        from user,param_province
+        where user.province_id=param_province.province_id
+        AND user.id=#{userId}
+    </select>
+
+    <select id="getAreaDao" resultType="com.datamarketing.entity.Area">
+        select * from param_province;
+    </select>
+
+    <select id="getAdminAreaDao" resultType="com.datamarketing.entity.Area">
+        SELECT param_province.province_name,province_admin.province_id
+        FROM param_province,province_admin
+        WHERE province_admin.province_id=param_province.province_id
+        AND province_admin.admin_id=#{userId}
+    </select>
+    <select id="getAreaByUserIdDao" resultType="com.datamarketing.entity.Area">
+        SELECT param_province.province_id,param_province.province_name FROM param_province,province_admin
+        WHERE param_province.province_id=province_admin.province_id
+        AND province_admin.admin_id=#{userId}
+    </select>
+
+    <insert id="addRelatDao">
+        INSERT into province_admin(province_id, admin_id)VALUES
+        <foreach collection="provinceIds" index="index" separator="," item="provinceId">
+            (#{provinceId},#{userId})
+        </foreach>
+    </insert>
+
+    <update id="updateUserPowerDao">
+        UPDATE user SET level='1' where id=#{userId}
+    </update>
+
+    <update id="updateUserByIdDao">
+        UPDATE user SET username=#{user.username},password=#{user.password},province_id=#{user.province_id},realname=#{user.realname},phoneNum=#{user.phoneNum}
+        where id=#{userId}
+    </update>
+</mapper>

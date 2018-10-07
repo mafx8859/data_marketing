@@ -1,0 +1,44 @@
+.searchRow{
+	width: 1010px;
+	height: 80px;
+	background-color: #ecf3f7;
+	margin-bottom: 20px;
+	padding-left: 30px;
+	margin-left: -30px;
+}
+.searchRow span{
+	color: #296181;
+	line-height: 80px;
+	font-size: 23px;
+	letter-spacing: 2px;
+}
+.searchRow input{
+	line-height: 30px;
+	font-size: 20px;
+	letter-spacing: 2px;
+	margin:0 10px;
+}
+.searchRow button{
+	border-radius: 10px;
+	background-color: lightblue;
+	color: #296181;
+	line-height: 30px;
+	font-size: 20px;
+	letter-spacing: 2px;
+	width: 80px;
+}
+/*.J_table thead th{
+	background-color: #6a9ad0;
+	color: white;
+	margin: 0 auto;
+	text-align: center;
+}
+#J_template tr{
+	text-align: center;
+}
+#J_template tr:nth-child(odd){
+	background-color: #c2d7ee;
+}
+#J_template tr:nth-child(even){
+	background-color: #ecf3f7;
+}*/

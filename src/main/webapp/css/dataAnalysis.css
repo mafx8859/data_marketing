@@ -1,0 +1,53 @@
+.clear{
+	clear: both;
+}
+.choose{
+	background-color: #ecf3f7;
+	margin:-10px -30px 10px;
+	padding: 10px 30px 0;
+}
+.choose span{
+	font-size: 20px;
+	float: left;
+	width: 90px;
+	height: 60px;
+	line-height: 40px;
+	letter-spacing: 1px;
+	color: #296181;
+}
+.province{
+	width: 200px;
+	height: 40px;
+}
+.only{
+	width: 800px;
+	font-size: 20px;
+	height: 60px;
+	line-height: 40px;
+	letter-spacing: 1px;
+	color: #296181;
+}
+.choose ul{
+	list-style: none;
+}
+.choose ul li{
+	color: #296181;
+	float: left;
+	margin: 5px;
+	font-size: 20px;
+	letter-spacing: 1px;
+}
+.color{
+	background-color: #b0dcf6;
+}
+.chaxun{
+	height: 45px;
+	border-radius: 10px;
+	background-color: lightblue;
+	color: #296181;
+	line-height: 30px;
+	font-size: 20px;
+	letter-spacing: 2px;
+	width: 80px;
+	float: right;
+}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../../css/common.css">
+	<link rel="stylesheet" type="text/css" href="../../css/inventoryManagement.css">
+	<link rel="stylesheet" type="text/css" href="../../css/iconfont.css">
+</head>
+<body>
+	<div id="header">
+		<img src="../../img/header.png" class="aligncenter" style="width: 1200px;">
+	</div>
+	<div id="main">
+		<div id="nav">
+			<ul>
+				<a href="inventoryManagement.html"><li style="background-color: #ecf3f7">库存管理</li></a>
+				<a href="marketingStatistics.html"><li>营销统计</li></a>
+				<a href="dataAnalysis.html"><li>数据分析</li></a>
+			</ul>
+		</div>
+		<div id="content">
+			<div class="searchRow">
+				<span>查询</span>
+				<input type="text" class="search" placeholder="请输入商品名称">
+				<button class="chaxun">搜索</button>
+				<!-- <button class="J_add">新增</button> -->
+			</div>
+            <div id="chaxunContent">
+			<table class="J_table table table-hover table-bordered">
+	            <thead>
+	                <tr>
+	                    <th>序号</th>
+	                    <th>商品名称</th>
+	                    <th>商品单价(箱)</th>
+	                    <th>库存数量</th>
+	                    <th>操作</th>
+	                </tr>
+	            </thead>   
+	            <tbody id="J_template">
+	            </tbody>     
+	        </table>
+		</div>
+        </div>
+	</div>
+	
+     <!-- 删除-->
+    <div class="modal fade" id="J_DEl" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <input type="hidden" class='hiddenDelete' value=''>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="  modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">删除</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="" class="form-horizontal J_DelForm">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">  是否确认删除</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default"   data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary J_delSure">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- 修改对话框 -->
+    <div class="modal fade" id="editDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">修改</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="" class="form-horizontal J_editForm">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">商品名称<span class="requires"></span></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control J_editName" name="name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">商品单价(箱)<span class="requires"></span></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control J_editPrice" name="price">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">库存数量<span class="requires"></span></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control J_editNum" name="num">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary J_editDlg">确定</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+    <!-- 新增对话框 -->
+    <div class="modal fade" id="addDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">新增</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="" class="form-horizontal J_addForm">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">商品名称<span class="requires"></span></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control J_AddName" name="J_AddName">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">商品单价<span class="requires"></span></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control J_AddPrice" name="J_AddPrice">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">库存数量<span class="requires"></span></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control J_AddNum" name="J_AddNum">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary J_addDlg">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<input class="hidId" type="hidden" value=""></input>
+
+	<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../js/inventoryManagement.js"></script>
+	</body>
+</html>

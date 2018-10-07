@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../../css/common.css">
+	<link rel="stylesheet" type="text/css" href="../../css/marketingStatistics.css">
+	<link rel="stylesheet" type="text/css" href="../../css/iconfont.css">
+
+</head>
+<body>
+	<div id="header">
+		<img src="../../img/header.png" class="aligncenter" style="width: 1200px;">
+	</div>
+	<div id="main">
+		<div id="nav">
+			<ul>
+				<a href="inventoryManagement.html"><li>库存管理</li></a>
+				<a href="marketingStatistics.html"><li style="background-color: #ecf3f7">营销统计</li></a>
+				<a href="dataAnalysis.html"><li>数据分析</li></a>
+			</ul>
+		</div>
+		<div id="content">
+			<div class="choose">
+				<!-- <span style="height: 100px;">地区</span>
+				<ul>
+					<a href="#"><li>全国</li></a>
+					<a href="#"><li>北京</li></a>
+					<a href="#"><li>上海</li></a>
+					<a href="#"><li>天津</li></a>
+					<a href="#"><li>重庆</li></a>
+					<a href="#"><li>黑龙江</li></a>
+					<a href="#"><li>辽宁</li></a>
+					<a href="#"><li>吉林</li></a>
+					<a href="#"><li>河北</li></a>
+					<a href="#"><li>河南</li></a>
+					<a href="#"><li>湖南</li></a>
+					<a href="#"><li>山东</li></a>
+					<a href="#"><li>山西</li></a>
+					<a href="#"><li>陕西</li></a>
+					<a href="#"><li>安徽</li></a>
+					<a href="#"><li>浙江</li></a>
+					<a href="#"><li>江苏</li></a>
+					<a href="#"><li>福建</li></a>
+					<a href="#"><li>广东</li></a>
+					<a href="#"><li>海南</li></a>
+					<a href="#"><li>四川</li></a>
+					<a href="#"><li>云南</li></a>
+					<a href="#"><li>贵州</li></a>
+					<a href="#"><li>青海</li></a>
+					<a href="#"><li>甘肃</li></a>
+					<a href="#"><li>内蒙古</li></a>
+					<a href="#"><li>江西</li></a>
+					<a href="#"><li>台湾</li></a>
+					<a href="#"><li>宁夏</li></a>
+					<a href="#"><li>新疆</li></a>
+					<a href="#"><li>西藏</li></a>
+					<a href="#"><li>广西</li></a>
+					<a href="#"><li>香港</li></a>
+					<a href="#"><li>澳门</li></a>
+				</ul><div class="clear"></div> -->
+				<span>时间</span><label for="start">起始时间：</label><input id="startTime" type="date" value="2017-01-13"/><label for="end" style="margin-left: 100px;">结束时间：</label><input id="endTime" type="date" value="2018-01-13"/><div class="clear"></div>
+
+				
+
+				<span>商品名称</span>
+				<input type="text" class="search" placeholder="请输入商品名称">
+				<button class="chaxun">搜索</button>
+
+
+
+				<!-- <ul>
+				    <a href="#"><li>全部</li></a>
+					<a href="#"><li>雪韵矿泉水</li></a>
+				</ul> -->
+				<div class="clear"></div>
+			</div>
+            <div id="chaxunContent">
+			<table class="J_table table table-hover table-bordered">
+	            <thead>
+	                <tr>
+	                    <th>序号</th>
+	                    <th>商品名称</th>
+	                    <th>地区</th>
+	                    <th>时间段(起)</th>
+	                    <th>时间段(止)</th>
+	                    <th>销售量</th>
+	                    <th>操作</th>
+	                </tr>
+	            </thead>   
+	            <tbody id="J_template">
+	            </tbody>     
+	        </table>
+            </div>
+		</div>
+	</div>
+
+
+     <!-- 删除-->
+    <div class="modal fade" id="J_DEl" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <input type="hidden" class='hiddenDelete' value=''>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="  modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">删除</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="" class="form-horizontal J_DelForm">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">  是否确认删除</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default"   data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary J_delSure">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- 修改对话框 -->
+    <div class="modal fade" id="editDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">修改</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="" class="form-horizontal J_editForm">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">商品名称<span class="requires"></span></label>
+                            <div class="col-sm-8">
+                                <input type="test" class="form-control editName" name="editName" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">地区<span class="requires"></span></label>
+                            <div class="col-sm-8">
+                                <select class="form-control editPrivince province" name="editPrivince"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">时间段(起)<span class="requires"></span></label>
+                            <div class="col-sm-8">
+                                <input type="date" class="form-control editStart" name="editStart">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">时间段(止)<span class="requires"></span></label>
+                            <div class="col-sm-8">
+                                <input type="date" class="form-control editEnd" name="editEnd">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">销售量<span class="requires"></span></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control editNum" name="editNum">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary J_editDlg">确定</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+
+    <!-- 新增对话框 -->
+    <div class="modal fade" id="addDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">新增</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="" class="form-horizontal J_addForm">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">商品名称<span class="requires"></span></label>
+                            <div class="col-sm-8">
+                            	<select class="form-control goodsName" name="goodsName"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">地区<span class="requires"></span></label>
+                            <div class="col-sm-8">
+                                <select class="form-control province" name="province"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">时间段(起)<span class="requires"></span></label>
+                            <div class="col-sm-8">
+                                <input type="date" class="form-control J_AddNum" name="startTime" value="2017-01-13"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">时间段(止)<span class="requires"></span></label>
+                            <div class="col-sm-8">
+								<input type="date" class="form-control J_AddNum" name="endTime" value="2017-01-13"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">销售量<span class="requires"></span></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control J_AddNum" name="sum">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary J_addDlg">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<input class="hidId" type="hidden" value=""></input>
+<input class="hidId2" type="hidden" value=""></input>
+
+	
+	<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../js/marketingStatistics0.js"></script>
+	</body>
+</html>

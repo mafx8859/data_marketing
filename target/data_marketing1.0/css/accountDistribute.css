@@ -1,0 +1,10 @@
+#content{
+	padding-top: 20px;
+}
+.J_editForm .chooseProvinces li{
+	width:30px;
+	height:30px;
+	float:left;
+	margin:10px 20px;
+	list-style:none;
+}

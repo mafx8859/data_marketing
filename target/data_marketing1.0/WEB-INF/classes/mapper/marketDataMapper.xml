@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="com.datamarketing.dao.MarketDataDao">
+    <insert id="addMarketDataDao">
+        INSERT into goods_marketing(goods_id, province_id, start_date, end_date, sales_volume,user_id)
+         VALUE (#{goods_id}, #{province_id}, #{start_date}, #{end_date}, #{sales_volume},#{user_id})
+    </insert>
+    <select id="getMarketDataByIdDao" resultType="com.datamarketing.entity.GoodsMarketData">
+        SELECT goods_marketing.data_id,goods.goods_name,param_province.province_name,goods_marketing.goods_id,goods_marketing.province_id,goods_marketing.sales_volume,goods_marketing.start_date,goods_marketing.end_date
+        from goods_marketing,goods,param_province
+        where goods_marketing.goods_id=goods.goods_id
+        AND goods_marketing.province_id=param_province.province_id
+        AND goods_marketing.user_id=#{userId}
+    </select>
+    <select id="getAllMarketDataDao" resultType="com.datamarketing.entity.GoodsMarketData">
+        SELECT goods_marketing.data_id,goods.goods_name,param_province.province_name,goods_marketing.goods_id,goods_marketing.province_id,goods_marketing.sales_volume,goods_marketing.start_date,goods_marketing.end_date
+        from goods_marketing,goods,param_province
+        where goods_marketing.goods_id=goods.goods_id
+        AND goods_marketing.province_id=param_province.province_id
+    </select>
+
+    <select id="getMarketDataByAdminIdDao" resultType="com.datamarketing.entity.GoodsMarketData">
+        SELECT goods_marketing.data_id,goods.goods_name,param_province.province_name,goods_marketing.goods_id,goods_marketing.province_id,goods_marketing.sales_volume,goods_marketing.start_date,goods_marketing.end_date
+        from goods_marketing,goods,param_province,province_admin
+        where goods_marketing.goods_id=goods.goods_id
+        AND goods_marketing.province_id=param_province.province_id
+        AND (goods_marketing.province_id=province_admin.province_id OR goods_marketing.city_id=province_admin.city_id)
+        AND province_admin.admin_id=#{userId}
+    </select>
+
+    <delete id="deleteMarketDataByIdDao">
+        DELETE from goods_marketing WHERE data_id=#{dataId}
+    </delete>
+
+    <select id="getMarketDataByDataIdDao" resultType="com.datamarketing.entity.GoodsMarketData">
+        SELECT goods_marketing.*,goods.goods_name,param_province.province_name
+        from goods_marketing,goods,param_city,param_province
+        where goods_marketing.goods_id=goods.goods_id
+        AND goods_marketing.province_id=param_province.province_id
+        AND goods_marketing.data_id=#{dataId}
+    </select>
+
+    <update id="updateMarketDataByIdDao">
+        UPDATE goods_marketing
+        SET province_id=#{goodsMarketData.province_id},city_id=#{goodsMarketData.city_id},start_date=#{goodsMarketData.start_date},end_date=#{goodsMarketData.end_date},sales_volume=#{goodsMarketData.sales_volume},goods_id=#{goodsMarketData.goods_id}
+        WHERE data_id=#{dataId}
+    </update>
+
+    <select id="searchMarketDataByProvinceIdDao" resultType="com.datamarketing.entity.GoodsMarketData">
+        SELECT goods_marketing.*,goods.goods_name,param_province.province_name
+        from goods_marketing,goods,param_province
+        where goods_marketing.goods_id=goods.goods_id
+        AND goods_marketing.province_id=param_province.province_id
+        AND goods_marketing.province_id=#{provinceId}
+    </select>
+
+    <select id="searchMarketDataByDate" resultType="com.datamarketing.entity.GoodsMarketData">
+        SELECT goods_marketing.*,goods.goods_name,param_province.province_name
+        from goods_marketing,goods,param_province
+        where goods_marketing.goods_id=goods.goods_id
+        AND goods_marketing.province_id=param_province.province_id
+        AND goods_marketing.start_date &gt;=#{startDate}
+        AND goods_marketing.end_date &lt;=#{endDate}
+        <if test="goodsName!='全部'.toString()">
+            AND goods.goods_name like CONCAT('%',#{goodsName},'%')
+        </if>
+    </select>
+
+    <select id="getMarketDataByDateAndUserIdDao" resultType="com.datamarketing.entity.GoodsMarketData">
+        SELECT goods_marketing.*,goods.goods_name,param_province.province_name
+        from goods_marketing,goods,param_province
+        where goods_marketing.goods_id=goods.goods_id
+        AND goods_marketing.province_id=param_province.province_id
+        AND goods_marketing.start_date &gt;=#{startDate}
+        AND goods_marketing.end_date &lt;=#{endDate}
+        AND goods_marketing.user_id=#{userId}
+        <if test="goodsName!='全部'.toString()">
+            AND goods.goods_name like CONCAT('%',#{goodsName},'%')
+        </if>
+    </select>
+    <select id="getMarketDataByDateAndAdminIdDao" resultType="com.datamarketing.entity.GoodsMarketData">
+        SELECT goods_marketing.data_id,goods.goods_name,param_province.province_name,goods_marketing.goods_id,goods_marketing.province_id,goods_marketing.sales_volume,goods_marketing.start_date,goods_marketing.end_date
+        from goods_marketing,goods,param_province,province_admin
+        where goods_marketing.goods_id=goods.goods_id
+        AND goods_marketing.province_id=param_province.province_id
+        AND (goods_marketing.province_id=province_admin.province_id OR goods_marketing.city_id=province_admin.city_id)
+        AND province_admin.admin_id=#{userId}
+        AND goods_marketing.start_date &gt;=#{startDate}
+        AND goods_marketing.end_date &lt;=#{endDate}
+        <if test="goodsName!='全部'.toString()">
+            AND goods.goods_name like CONCAT('%',#{goodsName},'%')
+        </if>
+    </select>
+    <select id="getUserMarketDataAnalysisDao" resultType="com.datamarketing.entity.GoodsMarketData">
+        SELECT goods_marketing.*,goods.goods_name,param_province.province_name
+        from goods_marketing,goods,param_province
+        where goods_marketing.goods_id=goods.goods_id
+        AND goods_marketing.province_id=param_province.province_id
+        AND goods_marketing.start_date &gt;=#{startDate}
+        AND goods_marketing.end_date &lt;=#{endDate}
+        AND goods_marketing.user_id=#{userId}
+        <if test="provinceId!=0">
+            AND goods_marketing.province_id=#{provinceId}
+        </if>
+        ORDER BY goods_marketing.sales_volume desc
+    </select>
+
+    <select id="getAdminedUserDataAnalysisDao" resultType="com.datamarketing.entity.DataAnalysisResult">
+        SELECT goods_marketing.user_id,user.username,param_province.province_name,SUM(goods_marketing.sales_volume) AS sales_volume
+        FROM user,param_province,goods_marketing
+        where param_province.province_id=goods_marketing.province_id
+        AND goods_marketing.user_id=user.id
+        AND goods_marketing.start_date &gt;=#{startDate}
+        AND goods_marketing.end_date &lt;=#{endDate}
+        AND goods_marketing.province_id=#{provinceId}
+        GROUP BY (goods_marketing.user_id)
+        ORDER BY SUM(goods_marketing.sales_volume) desc
+    </select>
+</mapper>

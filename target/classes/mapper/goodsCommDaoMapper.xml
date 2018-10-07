@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="com.datamarketing.dao.GoodsCommDao">
+    <!--普通用户查看个人商品-->
+    <select id="getGoodsByUserIdDao" resultType="com.datamarketing.entity.Goods">
+        select * from goods where user_id=#{userId}
+    </select>
+    <!--超级管理员查看所有商品-->
+    <select id="getAllGoodsDao" resultType="com.datamarketing.entity.Goods">
+        select * from goods
+    </select>
+    <!--管理员查看所属地区商品-->
+    <select id="getBelongGoodsDao" resultType="com.datamarketing.entity.Goods">
+        <!--SELECT goods.* from goods where goods.user_id=#{userId} or goods.user_id in (SELECT generaluser_admin.general_user_id from generaluser_admin where generaluser_admin.admin_id=#{userId})-->
+        SELECT distinct goods.* from goods,province_admin,`user` where province_admin.province_id=`user`.province_id and province_admin.admin_id=#{userId}
+    </select>
+    <insert id="addGoodsDao">
+        INSERT into goods(goods_name,goods_price,goods_num,user_id)VALUE (#{goods_name},#{goods_price},#{goods_num},#{user_id})
+    </insert>
+    <delete id="deleteGoodsDao">
+        DELETE from goods where goods_id=#{goodsId}
+    </delete>
+    <select id="getGoodsByIdDao" resultType="com.datamarketing.entity.Goods">
+        SELECT * from goods where goods_id=#{goodsId}
+    </select>
+    <update id="updateGoodsDao">
+        UPDATE goods SET goods_name=#{goods.goods_name},goods_price=#{goods.goods_price},goods_num=#{goods.goods_num} where goods_id=#{goodsId}
+    </update>
+
+    <select id="searchGoodsByUserIdAndGoodsNameDao" resultType="com.datamarketing.entity.Goods">
+        SELECT goods.* from goods where goods.user_id=#{userId} AND goods.goods_name like CONCAT('%',#{goodsName},'%')
+    </select>
+
+    <select id="searchBelongGoodsDao" resultType="com.datamarketing.entity.Goods">
+        SELECT goods.* from goods where (goods.user_id=#{userId} or goods.user_id in (SELECT generaluser_admin.general_user_id from generaluser_admin where generaluser_admin.admin_id=#{userId}))AND goods.goods_name like CONCAT('%',#{goodsName},'%')
+    </select>
+
+    <select id="searchAllGoodsDao" resultType="com.datamarketing.entity.Goods">
+        select * from goods where goods_name LIKE CONCAT('%',#{goodsName},'%')
+    </select>
+</mapper>

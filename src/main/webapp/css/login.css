@@ -1,0 +1,97 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+#main{
+	width: 1180px;
+	margin: 0 auto;
+	background: url("../img/background.png") no-repeat;
+	background-size:1180px; 
+	padding: 200px 20px;
+}
+.mainBox{
+	width: 460px;
+	height:346px;
+	margin: -10px 325px;
+	background-color: rgba(282, 232, 232,0.38);
+	border-radius: 5px;
+    font-size: 16px;
+    line-height: 22px;
+    padding: 30px;
+}
+.mainBox h1 {
+	text-align: center;
+	font-size: 38px;
+    margin: 0 0 22px 0;
+    letter-spacing: 15px;
+}
+.user span,
+.powss span {
+	width: 80px;
+	display: inline-block;
+}
+.mainBox input {
+	width: 350px;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #d4d4d4;
+	margin-top: 8px;
+    border-radius: 5px;
+    padding-left: 15px;
+    font-size: 16px;
+}
+#inputCode{
+	width: 155px;
+}
+/*.field_message {
+	color: #f66f6a;
+    margin-top: 5px;
+}*/
+/*em {
+	font-style: normal;
+}*/
+/*input.field_message{
+    border: 1px solid #f66f6a !important;
+}*/
+.link-submit {
+    background: rgb(198,226,255);
+    width: 130px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 5px;
+	margin:20px auto;
+    text-align: center;
+    font-size: 20px;
+    letter-spacing: 10px;
+}
+.mainBox input:focus {
+    border: 1px solid #15b0eb;
+    color: #282828;
+    box-shadow: 0px 3px 8px #d4d4d4;
+}
+.mainBox input{
+	display: inline-block;
+	width: 300px;
+}
+#checkCode{
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	letter-spacing: 2px;
+	text-align: center;
+	display: inline-block;
+	margin-left: 40px;
+	background-color: white;
+}
+.link-submit:hover {
+    text-decoration: none;
+    color: #fff;
+    background: #a54b4a;
+}
+/*#userName-error,
+#password-error {
+	display: none;
+}*/
+/*.code{
+	margin-top: 200px;
+}*/
